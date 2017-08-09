@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  category = '+ Categoria';
+  tasks = '+ Tarefa';
+  seeTaskByCategory = 'Ver tarefas por categoria';
+  seeTaskByUniqueList = 'Ver tarefas por lista única';
 }
