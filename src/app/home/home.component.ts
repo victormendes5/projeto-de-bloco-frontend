@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Tasks } from '../tasks';
+import { Task } from '../task';
 import { TaskService } from '../app.service';
 
 @Component({
@@ -10,20 +10,23 @@ import { TaskService } from '../app.service';
 
 export class HomeComponent implements OnInit {
 
-  tasks: Tasks[];
+  tasks: Task[];
   is_checked: boolean;
 
   constructor(private taskService: TaskService) { }
 
   getTasks(): void {
-    this.taskService.getTasks().then(tasks => this.tasks = tasks);
+    this.taskService
+      .getTasks()
+      .then(tasks => this.tasks = tasks);
   }
 
   ngOnInit(): void {
     this.getTasks();
   }
 
-  isChecked() {
+  isChecked(event, value) {
+    console.log(value);
     this.is_checked = !this.is_checked;
   }
 

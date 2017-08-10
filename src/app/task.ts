@@ -1,4 +1,5 @@
-export class Tasks {
+export class Task {
+  id: number;
   nome: string;
   categoria: string;
   feito: boolean;

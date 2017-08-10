@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Tasks } from '../tasks';
+import { Task } from '../task';
 import { TaskService } from '../app.service';
 
 @Component({
@@ -10,13 +10,15 @@ import { TaskService } from '../app.service';
 
 export class Home2Component implements OnInit {
 
-  tasks: Tasks[];
+  tasks: Task[];
   is_checked: boolean;
 
   constructor(private taskService: TaskService) { }
 
   getTasks(): void {
-    this.taskService.getTasks().then(tasks => this.tasks = tasks);
+    this.taskService
+      .getTasks()
+      .then(tasks => this.tasks = tasks);
   }
 
   ngOnInit(): void {

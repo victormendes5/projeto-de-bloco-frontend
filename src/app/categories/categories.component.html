@@ -1,21 +1,28 @@
 <div class="row">
   <div class="col-xs-6 col-md-6 col-md-offset-3">
 
-    <form class="form-group">
+    <!--<form class="form-group">-->
       <div class="input-group">
-        <input #inputNewCategory class="form-control" placeholder="Adicionar nova categoria">
+        <input #categoryName class="form-control" placeholder="Nova categoria">
         <div class="input-group-btn">
-          <button type="button" class="btn btn-default" (click)="addNewCategory($event, inputNewCategory.value)">Adicionar</button>
+          <button type="button" class="btn btn-default" (click)="add(categoryName.value)">Adicionar</button>
+          <!--<button type="button" class="btn btn-default" (click)="save()">Adicionar</button>-->
         </div>
       </div>
-    </form>
+    <!--</form>-->
 
     <table class="table">
       <thead>
-        <tr><th>Categorias disponíveis</th></tr>
+        <tr>
+          <th>Categorias disponíveis</th>
+          <th>Remover</th>
+        </tr>
       </thead>
       <tbody *ngFor="let category of noDuplicateCategory">
-        <tr><td>{{ category }}</td></tr>
+        <tr>
+          <td>{{ category }}</td>
+          <td><button class="btn btn-default" (click)="deleteCategory(category, $event)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button></td>
+        </tr>
       </tbody>
     </table>
 
