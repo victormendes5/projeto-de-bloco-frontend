@@ -1,3 +1,7 @@
+#About this project
+
+This is a college project. For more information about the college, please see: [Instituto Infnet](http://www.infnet.edu.br/infnet).
+
 # Todo
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.7.
