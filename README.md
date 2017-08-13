@@ -1,4 +1,4 @@
-#About this project
+# About this project
 
 This is a college project. For more information about the college, please see: [Instituto Infnet](http://www.infnet.edu.br/infnet).
 
