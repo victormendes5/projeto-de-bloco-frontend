@@ -4,25 +4,25 @@
     <form class="form-group">
       <div class="form-group">
         <div class="input-group">
-          <input #inputNewTask class="form-control" placeholder="Nova tarefa">
+          <input #inputNewTask class="form-control" placeholder="Adicione uma nova tarefa">
           <div class="input-group-btn">
-            <button type="button" (click)="addNewTaskInCategory($event, inputNewTask.value, categorySelected.value)" class="btn btn-default">Adicionar</button>
+            <button type="button" (click)="add($event, inputNewTask.value, categorySelected.value)" class="btn btn-default">Adicionar</button>
           </div>
         </div>
       </div>
       <div class="form-group">
         <select #categorySelected class="form-control">
-          <option *ngFor="let category of tasks" [value]="category.categoria">{{ category.categoria }}</option>
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
         </select>
       </div>
     </form>
 
     <table class="table">
       <thead>
-        <tr><th>Categorias disponíveis</th></tr>
+        <tr><th>Lista de tarefas</th></tr>
       </thead>
-      <tbody *ngFor="let category of tasks">
-        <tr><td  *ngIf="category.feito === false">{{ category.nome }}</td></tr>
+      <tbody *ngFor="let task of tasks">
+        <tr><td *ngIf="task.feito == false">{{ task.nome }} ( {{ task.categoria }} )</td></tr>
       </tbody>
     </table>
 

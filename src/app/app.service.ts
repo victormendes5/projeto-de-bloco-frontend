@@ -10,19 +10,10 @@ export class TaskService {
 
   private tasksUrl = 'api/tasks';
 
-  constructor(private http: Http) { }
-
-  getTasks(): Promise<Array<Task>> {
-    return this.http
-      .get(this.tasksUrl)
-      .toPromise()
-      .then((response) => {
-        return response.json().data as Task[];
-      })
-      .catch(this.handleError);
+  constructor(private http: Http) {
   }
 
-  getCategories(): Promise<Array<Task>> {
+  getTasks(): Promise<Array<Task>> {
     return this.http
       .get(this.tasksUrl)
       .toPromise()
@@ -60,32 +51,6 @@ export class TaskService {
       .toPromise()
       .catch(this.handleError);
   }
-
-  // private post(task: Task): Promise<Task> {
-  //   const headers = new Headers({
-  //     'Content-Type': 'application/json'
-  //   });
-  //
-  //   return this.http
-  //     .post(this.tasksUrl, JSON.stringify(task), { headers: headers })
-  //     .toPromise()
-  //     .then(res => res.json().data)
-  //     .catch(this.handleError);
-  // }
-
-  // private put(task: Task): Promise<Task> {
-  //   const headers = new Headers({
-  //     'Content-Type': 'application/json'
-  //   });
-  //
-  //   const url = `${this.tasksUrl}/${task.id}`;
-  //
-  //   return this.http
-  //     .put(url, JSON.stringify(task), { headers: headers })
-  //     .toPromise()
-  //     .then(() => task)
-  //     .catch(this.handleError);
-  // }
 
   private handleError(error: any): Promise<any> {
     console.error('Ocorreu um erro', error);

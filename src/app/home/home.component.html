@@ -13,7 +13,7 @@
       <tr *ngIf="task.feito === false">
         <td>
           <form>
-            <input type="checkbox" [checked]="task.feito" (click)="isChecked()">
+            <input type="checkbox" [checked]="task.feito">
           </form>
         </td>
         <td>{{ task.nome }}</td>
@@ -39,7 +39,7 @@
       <tr *ngIf="task.feito === true">
         <td>
           <form>
-            <input type="checkbox" [checked]="task.feito" (click)="isChecked($event, task.feito)">
+            <input type="checkbox" [checked]="task.feito">
           </form>
         </td>
         <td><s>{{ task.nome }}</s></td>

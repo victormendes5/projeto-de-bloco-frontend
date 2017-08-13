@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../app.service';
-import { Task } from '../task';
 
 @Component({
   selector: 'app-tasks',
@@ -10,31 +8,45 @@ import { Task } from '../task';
 
 export class TasksComponent implements OnInit {
 
-  tasks: Task[];
-  error: any;
+  categories = ['Casa', 'Trabalho', 'Faculdade'];
+  tasks = [
+    { nome: 'Varrer o quarto', categoria: 'Casa', feito: false },
+    { nome: 'Lavar a louça', categoria: 'Casa', feito: true },
+    { nome: 'Lavar as roupas', categoria: 'Casa', feito: false },
+    { nome: 'Consertar a porta', categoria: 'Casa', feito: false },
+    { nome: 'Terminar o relatório', categoria: 'Trabalho', feito: false },
+    { nome: 'Estudar para a próxima reunião', categoria: 'Trabalho', feito: false },
+    { nome: 'Enviar email sobre o problema', categoria: 'Trabalho', feito: false },
+    { nome: 'Levar pó de café', categoria: 'Trabalho', feito: true },
+    { nome: 'Comprar canetas novas', categoria: 'Trabalho', feito: true },
+    { nome: 'Estudar Etapa 1', categoria: 'Faculdade', feito: true },
+    { nome: 'Estudar Etapa 2', categoria: 'Faculdade', feito: true },
+    { nome: 'Estudar Etapa 3', categoria: 'Faculdade', feito: false },
+    { nome: 'Fazer TP1', categoria: 'Faculdade', feito: false }
+  ];
 
-  constructor(private taskService: TaskService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.getTasks();
   }
 
-  getTasks(): void {
-    this.taskService
-      .getTasks()
-      .then(tasks => {
-        this.tasks = tasks;
-      })
-      .catch(error => this.error = error);
+  validate(newTask, category) {
+    if (this.tasks.filter(task => task.nome === newTask && task.categoria === category).length > 0) {
+      console.log('contém o elemento');
+    } else {
+      this.tasks.push({
+        nome: newTask,
+        categoria: category,
+        feito: false
+      });
+      console.log('Não contém o elemento');
+    }
   }
 
-  deleteTask(task: Task, event: any): void {
-    event.stopPropagation();
-    this.taskService
-      .delete(task)
-      .then(res => {
-        this.tasks = this.tasks.filter(h => h !== task);
-      })
-      .catch(error => this.error = error);
+  add(event, newTask, category) {
+    if (newTask !== '') {
+      this.validate(newTask, category);
+    }
   }
+
 }

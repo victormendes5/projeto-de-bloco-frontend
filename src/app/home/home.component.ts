@@ -11,7 +11,6 @@ import { TaskService } from '../app.service';
 export class HomeComponent implements OnInit {
 
   tasks: Task[];
-  is_checked: boolean;
 
   constructor(private taskService: TaskService) { }
 
@@ -23,11 +22,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTasks();
-  }
-
-  isChecked(event, value) {
-    console.log(value);
-    this.is_checked = !this.is_checked;
   }
 
 }
