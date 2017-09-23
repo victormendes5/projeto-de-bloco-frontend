@@ -1,0 +1,15 @@
+<h1 class="page-header">Banheiros</h1>
+<div *ngFor="let bathrooms of data" class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-sm-8">
+      <h3>{{ bathrooms.name }}</h3>
+      <h3>{{ bathrooms.geoResult.address }}</h3>
+      <h3>{{ bathrooms.description.text }}</h3>
+    </div>
+    <div class="col-sm-4">
+      <agm-map [latitude]="bathrooms.geoResult.point.lat" [longitude]="bathrooms.geoResult.point.lng" [zoom]="13">
+        <agm-marker [latitude]="bathrooms.geoResult.point.lat" [longitude]="bathrooms.geoResult.point.lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>

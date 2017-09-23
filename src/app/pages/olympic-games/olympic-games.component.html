@@ -1,0 +1,14 @@
+<h1 class="page-header">Jogos Olímpicos</h1>
+<div *ngFor="let games of data" class="panel panel-default">
+  <div class="panel-body">
+    <div class="col-sm-8">
+      <h3>{{ games.name }}</h3>
+      <h3>{{ games.description.link }}</h3>
+    </div>
+    <div class="col-sm-4">
+      <agm-map [latitude]="games.geoResult.point.lat" [longitude]="games.geoResult.point.lng" [zoom]="13">
+        <agm-marker [latitude]="games.geoResult.point.lat" [longitude]="games.geoResult.point.lng"></agm-marker>
+      </agm-map>
+    </div>
+  </div>
+</div>
